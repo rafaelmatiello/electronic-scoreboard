@@ -1,0 +1,50 @@
+<div style="height: 100%;">
+
+  <div class="grid bg-blue-50" style="height: 10%">
+    <div class="col-4 es-center align-items-center"></div>
+    <!--<div class="col-3 es-center align-items-center">Set 1</div>-->
+    <div class="col-4 es-center align-items-center">Set</div>
+    <div class="col-4 es-center align-items-center">Score</div>
+  </div>
+  <div class="grid bg-blue-50" style="min-height: 40%;margin-top: auto;">
+    <div class="col-4 es-center align-items-center  text-indigo-600">
+      <div class="card flex flex-row flex-wrap">
+        <div class="flex es-font-30 ">A</div>
+        <div class="flex es-center">
+          <div class="card flex flex-column">
+            <div class="flex align-items-center justify-content-center"><i class="pi pi-chevron-circle-up"
+                                                                           style="font-size: 2rem" (click)="sum('A')"></i>
+            </div>
+            <div class="flex align-items-center justify-content-center "><i class="pi pi-chevron-circle-down"
+                                                                            style="font-size: 2rem;margin-top: 10px;" (click)="sub('A')"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="col-3 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0">1</div>-->
+    <div class="col-4 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0 text-50">3</div>
+    <div class="col-4 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0 text-50">15</div>
+  </div>
+  <div class="grid bg-blue-50" style="min-height: 40%;margin-top: auto;">
+    <div class="col-4 es-center align-items-center  text-indigo-600">
+      <div class="card flex flex-row flex-wrap">
+        <div class="flex es-font-30 ">B</div>
+        <div class="flex es-center">
+          <div class="card flex flex-column">
+            <div class="flex align-items-center justify-content-center"><i class="pi pi-chevron-circle-up"
+                                                                           style="font-size: 2rem" (click)="sum('B')"></i>
+            </div>
+            <div class="flex align-items-center justify-content-center "><i class="pi pi-chevron-circle-down"
+                                                                            style="font-size: 2rem;margin-top: 10px;" (click)="sub('B')"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="col-3 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0" >6</div>-->
+    <div class="col-4 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0 text-50">0</div>
+    <div class="col-4 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0 text-50">40</div>
+  </div>
+</div>
+
