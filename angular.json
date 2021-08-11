@@ -130,6 +130,10 @@
               "devServerTarget": "electronic-scoreboard:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
