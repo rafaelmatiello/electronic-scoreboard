@@ -28,8 +28,13 @@ export class ScoreboardComponent implements OnInit {
     this.scoreboard = this.service.getScoreboard();
   }
 
-  reset(a: string):void {
+  reset(): void {
     this.service.reset();
+    this.scoreboard = this.service.getScoreboard();
+  }
+
+  back(): void {
+    this.service.back();
     this.scoreboard = this.service.getScoreboard();
   }
 }

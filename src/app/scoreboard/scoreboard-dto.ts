@@ -2,6 +2,7 @@ export class ScoreboardDTO {
   teamA = new TeamScoreboardDTO();
   teamB = new TeamScoreboardDTO();
   winSet: string;
+  serviceSet = 'A';
 }
 
 

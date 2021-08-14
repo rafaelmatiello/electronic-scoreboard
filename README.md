@@ -1,27 +1,13 @@
-# ElectronicScoreboard
+# Build:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+- Remover o branch gh-pages, ao final configurar o pages
+- Antes do build alterar o base href para /electronic-scoreboard/
+<base href="/electronic-scoreboard/">
 
-## Development server
+Comandos:
+1 - git branch -d gh-pages  
+2 - git checkout -b gh-pages
+3 - ng build --prod --base-href "https://rafaelmatiello.github.io/electronic-scoreboard/"
+4 - ngh --dir=dist/electronic-scoreboard
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
