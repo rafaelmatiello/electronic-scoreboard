@@ -1,4 +1,5 @@
-<div style="height: 100%;" class="bg-blue-50">
+
+<div style="height: 100%;" class="bg-blue-50" (swipe)="onSwipe($event)" >
 
   <div class="grid bg-blue-50" style="height: 10%">
     <div class="col-4 es-center-line align-items-center">
@@ -12,7 +13,7 @@
 
 
     <!--<div class="col-3 es-center align-items-center">Set 1</div>-->
-    <div class="col-4 es-center align-items-center es-font-title">Set</div>
+    <div class="col-4 es-center align-items-center es-font-title">Set: {{eventText}}</div>
     <div class="col-4 es-center align-items-center es-font-title">Score</div>
   </div>
   <div class="grid bg-blue-50" style="min-height: 40%;margin-top: auto;">
@@ -67,4 +68,5 @@
          [ngClass]="{'text-green-300':scoreboard.winSet == 'B', 'text-50' : scoreboard.winSet != 'B'}">{{scoreboard.teamB.scoreFormatted}}</div>
   </div>
 </div>
+<p-confirmDialog (swipe)="onSwipeConfirmation($event)" [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>
 
