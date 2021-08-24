@@ -15,6 +15,7 @@ export class ScoreboardComponent implements OnInit {
   public eventText: string;
   public position: string;
   private confirmation: ConfirmationService;
+  public fullscreen = false;
 
   constructor(private service: ScoreboardService,
               private confirmationService: ConfirmationService,
@@ -98,6 +99,37 @@ export class ScoreboardComponent implements OnInit {
   private reset(): void {
     this.service.reset();
     this.scoreboard = this.service.getScoreboard();
+  }
+
+
+  /* View in fullscreen */
+  openFullscreen(): void {
+    const elem: any = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+
+    this.fullscreen = true;
+  }
+
+  /* Close fullscreen */
+
+
+  closeFullscreen(): void {
+    const doc: any = document;
+    if (doc.exitFullscreen) {
+      doc.exitFullscreen();
+    } else if (doc.webkitExitFullscreen) { /* Safari */
+      doc.webkitExitFullscreen();
+    } else if (doc.msExitFullscreen) { /* IE11 */
+      doc.msExitFullscreen();
+    }
+
+    this.fullscreen = false;
   }
 
 }

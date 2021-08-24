@@ -8,13 +8,17 @@
 
       <i class="pi pi-caret-right text-indigo-600"
          style="font-size: 2rem" (click)="resetOnClick()"></i>
-
     </div>
 
 
     <!--<div class="col-3 es-center align-items-center">Set 1</div>-->
     <div class="col-4 es-center align-items-center es-font-title">Set</div>
-    <div class="col-4 es-center align-items-center es-font-title">Score</div>
+    <div class="col-3 es-center align-items-center es-font-title">Score
+    </div>
+    <div class="col-1 es-center align-items-center es-font-title"> <i *ngIf="!fullscreen" class="pi pi-window-maximize text-indigo-600"
+            style="font-size: 2rem" (click)="openFullscreen()"></i>
+      <i *ngIf="fullscreen" class="pi pi-window-minimize text-indigo-600"
+         style="font-size: 2rem" (click)="closeFullscreen()"></i></div>
   </div>
   <div class="grid bg-blue-50" style="min-height: 40%;margin-top: auto;">
     <div class="col-4 es-center align-items-center  text-indigo-600">
