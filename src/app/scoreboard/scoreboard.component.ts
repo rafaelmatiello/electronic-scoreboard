@@ -13,7 +13,7 @@ export class ScoreboardComponent implements OnInit {
 
   scoreboard = new ScoreboardDTO();
   public eventText: string;
-  private position: string;
+  public position: string;
   private confirmation: ConfirmationService;
 
   constructor(private service: ScoreboardService,
@@ -35,8 +35,8 @@ export class ScoreboardComponent implements OnInit {
     this.scoreboard = this.service.getScoreboard();
   }
 
-  reset(): void {
-    this.confirmPosition('bottom');
+  resetOnClick(): void {
+    this.confirmPosition('top');
   }
 
   back(): void {
@@ -61,7 +61,7 @@ export class ScoreboardComponent implements OnInit {
     }
 
     if (x === 'right') {
-      this.reset();
+      this.resetOnClick();
     }
 
     this.eventText = `${x} ${y}/ ${evt.deltaX} - ${evt.deltaY}`;
@@ -72,9 +72,12 @@ export class ScoreboardComponent implements OnInit {
     this.position = position;
 
     this.confirmation = this.confirmationService.confirm({
-      message: 'Do you want to delete this record?',
-      header: 'Delete Confirmation',
+      message: 'Deseja iniciar um novo jogo, os pontos serão zerados!',
+      header: 'Novo Jovo',
       icon: 'pi pi-info-circle',
+      accept: () => {
+        this.reset();
+      },
       key: 'positionDialog'
     });
   }
@@ -88,8 +91,13 @@ export class ScoreboardComponent implements OnInit {
 
     if (x === 'right') {
       this.confirmation.close();
-      this.service.reset();
-      this.scoreboard = this.service.getScoreboard();
+      this.reset();
     }
   }
+
+  private reset(): void {
+    this.service.reset();
+    this.scoreboard = this.service.getScoreboard();
+  }
+
 }

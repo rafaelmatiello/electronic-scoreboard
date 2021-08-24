@@ -9,7 +9,6 @@ import {ButtonModule} from 'primeng/button';
 import * as Hammer from 'hammerjs';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
-
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any> {
     swipe: {direction: Hammer.DIRECTION_ALL},
