@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ScoreboardService} from './scoreboard.service';
 import {ScoreboardDTO} from './scoreboard-dto';
 import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-scoreboard',
@@ -16,6 +17,9 @@ export class ScoreboardComponent implements OnInit {
   public position: string;
   private confirmation: ConfirmationService;
   public fullscreen = false;
+  private lastLeft: moment.Moment = moment();
+  private lastRight: moment.Moment = moment();
+  private lastPoint: moment.Moment = moment();
 
   constructor(private service: ScoreboardService,
               private confirmationService: ConfirmationService,
@@ -49,20 +53,34 @@ export class ScoreboardComponent implements OnInit {
   onSwipe(evt): void {
     const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX < 0 ? 'right' : 'left') : '';
     const y = Math.abs(evt.deltaY) > 40 ? (evt.deltaY < 0 ? 'down' : 'up') : '';
-    if (y === 'up') {
-      this.sum('A');
-    }
 
-    if (y === 'down') {
-      this.sum('B');
+    const diffPoint = moment().diff(this.lastPoint, 'seconds');
+    if (diffPoint > 1) {
+      if (y === 'up') {
+        this.sum('A');
+      }
+
+      if (y === 'down') {
+        this.sum('B');
+      }
+
+      this.lastPoint = moment();
     }
 
     if (x === 'left') {
-      this.back();
+      const diff = moment().diff(this.lastLeft, 'seconds');
+      if (diff <= 2) {
+        this.back();
+      }
+      this.lastLeft = moment();
     }
 
     if (x === 'right') {
-      this.resetOnClick();
+      const diff = moment().diff(this.lastRight, 'seconds');
+      if (diff <= 2) {
+        this.resetOnClick();
+      }
+      this.lastRight = moment();
     }
 
     this.eventText = `${x} ${y}/ ${evt.deltaX} - ${evt.deltaY}`;

@@ -48,6 +48,7 @@ export class ScoreboardService {
     if (this.scoreboard.winSet) {
       this.resetScore();
       this.scoreboard.winSet = null;
+      this.scoreboard.serviceSide = 'R';
     }
 
     //0, 15, 30, 40
@@ -56,11 +57,17 @@ export class ScoreboardService {
       teamSelect.set += 1;
       this.scoreboard.winSet = team;
       this.scoreboard.serviceSet = this.scoreboard.serviceSet === 'A' ? 'B' : 'A';
+      this.scoreboard.serviceSide = 'R';
     } else {
       teamSelect.score += 1;
       teamSelect.scoreFormatted = this.scores[teamSelect.score];
+      this.scoreboard.serviceSide = this.changeSide();
     }
     this.save();
+  }
+
+  private changeSide(): string {
+    return this.scoreboard.serviceSide === 'R' ? 'L' : 'R';
   }
 
   private resetScore(): void {
@@ -68,6 +75,7 @@ export class ScoreboardService {
     this.scoreboard.teamA.scoreFormatted = this.scores[0];
     this.scoreboard.teamB.score = 0;
     this.scoreboard.teamB.scoreFormatted = this.scores[0];
+    this.scoreboard.serviceSide = 'R';
   }
 
   private formatScore(teamSelect: TeamScoreboardDTO): void {
@@ -89,6 +97,7 @@ export class ScoreboardService {
       this.saveNewHistory(this.scoreboard);
       teamSelect.score -= 1;
       teamSelect.scoreFormatted = this.scores[teamSelect.score];
+      this.scoreboard.serviceSide = this.changeSide();
       this.save();
     }
     //}

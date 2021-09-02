@@ -3,6 +3,7 @@ export class ScoreboardDTO {
   teamB = new TeamScoreboardDTO();
   winSet: string;
   serviceSet = 'A';
+  serviceSide = 'R';
 }
 
 
