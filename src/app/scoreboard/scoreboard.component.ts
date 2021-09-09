@@ -69,7 +69,7 @@ export class ScoreboardComponent implements OnInit {
 
     if (x === 'left') {
       const diff = moment().diff(this.lastLeft, 'seconds');
-      if (diff <= 2) {
+      if (diff > 1) {
         this.back();
       }
       this.lastLeft = moment();
