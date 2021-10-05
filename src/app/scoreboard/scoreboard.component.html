@@ -1,4 +1,4 @@
-<div style="height: 100%;margin-right: 10px;" class="bg-blue-50" (swipe)="onSwipe($event)">
+<div style="height: 100%;margin-right: 10px;" class="bg-blue-50" (swipeleft)="onSwipeUp($event)" (tap)="onTap($event)" (swiperight)="onSwipeDown($event)">
 
   <div class="grid bg-blue-50" style="height: 10%">
     <div class="col-4 es-center-line align-items-center">
@@ -11,8 +11,8 @@
 
 
     <!--<div class="col-3 es-center align-items-center">Set 1</div>-->
-    <div class="col-4 es-center align-items-center es-font-title">Set</div>
-    <div class="col-3 es-center align-items-center es-font-title">
+    <div class="col-4 es-center align-items-center es-font-title">Set </div>
+    <div class="col-3 es-center align-items-center es-font-title"> {{eventText}}
     </div>
     <div class="col-1 es-center align-items-center es-font-title"><i *ngIf="!fullscreen"
                                                                      class="pi pi-window-maximize text-indigo-600"
@@ -45,9 +45,9 @@
     </div>
     <!--<div class="col-3 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0">1</div>-->
     <div class="col-4 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0"
-         [ngClass]="{'text-green-300':scoreboard.winSet == 'A', 'text-900' : scoreboard.winSet != 'A'}">{{scoreboard.teamA.set}}</div>
+         [ngClass]="{'text-green-300':scoreboard.winSet == 'A', 'text-blue-50' : scoreboard.winSet != 'A'}">{{scoreboard.teamA.set}}</div>
     <div class="col-4 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0"
-         [ngClass]="{'text-green-300':scoreboard.winSet == 'A', 'text-900' : scoreboard.winSet != 'A'}">{{scoreboard.teamA.scoreFormatted}}</div>
+         [ngClass]="{'text-green-300':scoreboard.winSet == 'A', 'text-blue-50' : scoreboard.winSet != 'A'}">{{scoreboard.teamA.scoreFormatted}}</div>
   </div>
   <div class="grid bg-blue-50" style="min-height: 40%;margin-top: auto;">
     <div class="col-4 es-center align-items-center  text-indigo-600">
@@ -71,9 +71,9 @@
     </div>
     <!--<div class="col-3 es-center align-items-center es-font-30 bg-blue-700 border-3 border-0" >6</div>-->
     <div class="col-4 es-center align-items-center es-font-30 bg-orange-300 border-3 border-0 "
-         [ngClass]="{'text-green-700':scoreboard.winSet == 'B', 'text-900' : scoreboard.winSet != 'B'}">{{scoreboard.teamB.set}}</div>
+         [ngClass]="{'text-green-700':scoreboard.winSet == 'B', 'text-blue-50' : scoreboard.winSet != 'B'}">{{scoreboard.teamB.set}}</div>
     <div class="col-4 es-center align-items-center es-font-30 bg-orange-300 border-3 border-0 "
-         [ngClass]="{'text-green-700':scoreboard.winSet == 'B', 'text-900' : scoreboard.winSet != 'B'}">{{scoreboard.teamB.scoreFormatted}}</div>
+         [ngClass]="{'text-green-700':scoreboard.winSet == 'B', 'text-blue-50' : scoreboard.winSet != 'B'}">{{scoreboard.teamB.scoreFormatted}}</div>
   </div>
 </div>
 <p-confirmDialog (swipe)="onSwipeConfirmation($event)" [style]="{width: '50vw'}" key="positionDialog"

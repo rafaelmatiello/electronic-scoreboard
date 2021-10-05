@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ScoreboardService} from './scoreboard.service';
 import {ScoreboardDTO} from './scoreboard-dto';
 import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api';
@@ -150,4 +150,32 @@ export class ScoreboardComponent implements OnInit {
     this.fullscreen = false;
   }
 
+  onSwipeDown($event: any): void {
+    const diffPoint = moment().diff(this.lastPoint, 'seconds');
+    if (diffPoint > 1) {
+      this.sum('A');
+      this.eventText = 'A';
+
+      this.lastPoint = moment();
+    }
+  }
+
+  onSwipeUp($event: any): void {
+    const diffPoint = moment().diff(this.lastPoint, 'seconds');
+    if (diffPoint > 1) {
+      this.sum('B');
+      this.eventText = 'B';
+
+      this.lastPoint = moment();
+    }
+  }
+
+  onTap($evt: any): void {
+    console.log($evt)
+    const diff = moment().diff(this.lastLeft, 'seconds');
+    if (diff < 1) {
+      this.back();
+    }
+    this.lastLeft = moment();
+  }
 }
